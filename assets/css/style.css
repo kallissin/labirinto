@@ -1,0 +1,43 @@
+html, body, h1, h2, p, label, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+.hidden {
+    display: none;
+}
+/* MODAL */
+.modal{}
+.modal__container{}
+.modal__title{}
+.modal__container-btn{}
+.modal__label{}
+.modal__btn{}
+/* MODAL */
+
+/* MAIN */
+.container-labirinto{}
+.linha {
+    display: flex;
+}
+
+.celula {
+    width: 14px;
+    height: 12px;
+}
+
+.parede {
+    background-color: blue;
+    /*border: 0.5px solid;*/
+}
+
+.player {
+    width: 14px;
+    height: 12px;
+    background-color: black;
+}
+/* MAIN */
+
+
+

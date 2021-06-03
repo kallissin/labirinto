@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+
     <title>Labirinto</title>
 </head>
 <body>
-    
+    <div class="modal hidden">
+        <div class="modal__container">
+            <h1 class="modal__title"></h1>
+            <div class="modal__container-btn">
+                <label class="modal__label" id="label-modo" for="btn-modo"></label>
+                <button class="modal__btn" id="btn-modo" name="btn-modo"></button>
+            </div>
+            <div class="modal_container-btn">
+                <label class="modal__label" id="label-play" for="btn-play"></label>
+                <button class="modal__btn" id="btn-play" name="btn-play"></button>
+            </div>
+        </div>
+    </div>
+
+    <main>
+
+        <div class="container-labirinto" id="container-labirinto">
+
+        </div>
+    </main>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
