@@ -10,7 +10,7 @@ html, body, h1, h2, p, label, button {
 /*font-family: 'Sigmar One', cursive;*/
 
 .hidden {
-    /*display: none;*/
+    display: none;
 }
 
 /* GERAL */
