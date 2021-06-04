@@ -43,6 +43,9 @@ for (let i = 0; i < map.length; i++) {
 }
 
 const player = document.createElement('div');
+const playerEfect = document.createElement('div');
+playerEfect.classList.add('player-efect');
+player.appendChild(playerEfect);
 player.classList.add('player');
 
 const currentPosition = {
@@ -67,21 +70,26 @@ document.addEventListener('keydown', (event) => {
 
     if (keyName === 'ArrowUp') {
         if (map[linePosition -1][cellPosition] !== 'W') {
+            player.style.transform = "rotate(270deg)";
             linePosition -- ;
         }
     }
     if (keyName === 'ArrowDown') {
         if (map[linePosition +1][cellPosition] !== 'W') {
+            player.style.transform = "rotate(90deg)";
             linePosition ++ ;
         }
     }
     if (keyName === 'ArrowLeft') {
         if ((map[linePosition][cellPosition -1] !== 'W') && (cellPosition > 0)) {
+            player.style.transform = "rotate(180deg)";
             cellPosition -- ;
         }
     }
     if (keyName === 'ArrowRight') {
         if ((map[linePosition][cellPosition +1] !== 'W') && (cellPosition < 20)) {
+            player.style.transform = "rotate(0deg)";
+
             cellPosition ++ ;
         }
     }

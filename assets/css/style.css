@@ -1,41 +1,96 @@
 html, body, h1, h2, p, label, button {
     margin: 0;
     padding: 0;
-    box-sizing: 0;
+    box-sizing: border-box;
 }
+
+/* GERAL */
+
+/*font-family: 'Roboto', sans-serif;*/
+/*font-family: 'Sigmar One', cursive;*/
 
 .hidden {
     display: none;
 }
+
+/* GERAL */
+
 /* MODAL */
-.modal{}
-.modal__container{}
-.modal__title{}
+.modal{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    background-color: blueviolet;
+}
+.modal__container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.modal__title{
+    font-family: 'Sigmar One', cursive;
+    font-size: 42px;
+}
 .modal__container-btn{}
 .modal__label{}
 .modal__btn{}
 /* MODAL */
 
 /* MAIN */
-.container-labirinto{}
+.container-labirinto{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #0f0606;
+}
 .linha {
     display: flex;
 }
 
 .celula {
-    width: 14px;
-    height: 12px;
+    width: 30px;
+    height: 30px;
 }
 
 .parede {
-    background-color: blue;
-    /*border: 0.5px solid;*/
+    /* background-image: linear-gradient(to left, #dc2d16, #000000); */
+    background-color: #a01414;
+    /*box-shadow: 3px 5px 3px #1a0909;*/
 }
 
 .player {
-    width: 14px;
-    height: 12px;
-    background-color: black;
+    position: relative;
+    width: 26px;
+    height: 26px;
+    background-color: rgb(224, 221, 16);
+    border-radius: 100%;
+    transform: rotate(0deg);
+    animation: 3s linear 1s infinite running slidein;
+
+}
+@keyframes slideRight {
+    from {margin-left: -33px;}
+    to {margin-left: 0;}
+}
+.slideRight {animation-name: slideRight;}
+.player-efect {
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-right: 15px solid transparent;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid #0f0606;
+    bottom: 3px;
+    left: 25px;
+    transform: rotate(45deg);
 }
 /* MAIN */
 
