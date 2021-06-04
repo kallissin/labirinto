@@ -10,7 +10,7 @@ html, body, h1, h2, p, label, button {
 /*font-family: 'Sigmar One', cursive;*/
 
 .hidden {
-    display: none;
+    /*display: none;*/
 }
 
 /* GERAL */
@@ -39,6 +39,20 @@ html, body, h1, h2, p, label, button {
 .modal__container-btn{}
 .modal__label{}
 .modal__btn{}
+.modal-result {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #FFF;
+    position: fixed;
+    z-index: 1;
+}
+.modadal-result__title{
+    text-align: center;
+    font-size: 66px;
+    color: #b51b1b;
+}
 /* MODAL */
 
 /* MAIN */
@@ -65,6 +79,7 @@ html, body, h1, h2, p, label, button {
     background-color: #a01414;
     /*box-shadow: 3px 5px 3px #1a0909;*/
 }
+/*
 
 .player {
     position: relative;
@@ -74,12 +89,21 @@ html, body, h1, h2, p, label, button {
     border-radius: 100%;
     transform: rotate(0deg);
     animation: 3s linear 1s infinite running slidein;
-
+    
 }
+*/
+.player{
+    width: 26px;
+    height: 26px;
+    background-image: url('../img/pacman.gif');
+    background-repeat: no-repeat;
+}
+
 @keyframes slideRight {
     from {margin-left: -33px;}
     to {margin-left: 0;}
 }
+
 .slideRight {animation-name: slideRight;}
 .player-efect {
     position: absolute;
