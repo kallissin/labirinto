@@ -1,16 +1,18 @@
+:root {
+    --color-white: #FFF;
+}
+
 html, body, h1, h2, p, label, button {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* GERAL */
 
-/*font-family: 'Roboto', sans-serif;*/
-/*font-family: 'Sigmar One', cursive;*/
-
 .hidden {
-    /*display: none;*/
+    display: none;
 }
 
 /* GERAL */
@@ -22,38 +24,69 @@ html, body, h1, h2, p, label, button {
     left: 0;
     right: 0;
     position: fixed;
-    background-color: blueviolet;
+    background-image: url('../img/background-modal.jpg');
+    background-size: cover;
 }
+
 .modal__container{
     width: 100%;
-    height: 100%;
+    height: 64%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: column;
 }
+
 .modal__title{
     font-family: 'Sigmar One', cursive;
-    font-size: 42px;
+    font-size: 80px;
+    color:var(--color-white);
+    text-shadow: 5px 2px 2px black;
 }
-.modal__container-btn{}
-.modal__label{}
-.modal__btn{}
+
+.modal__container-btn{
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.modal__btn{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    box-shadow: 0 2px 5px black;
+    font-size: 23px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-image: linear-gradient(45deg, #d4066e, #960095);
+    color: var(--color-white);
+    cursor: pointer;
+}
+/* MODAL */
+
+/* MODAL-RESULT */
 .modal-result {
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background: #FFF;
+    background: var(--color-white);
     position: fixed;
     z-index: 1;
 }
+
 .modadal-result__title{
     text-align: center;
     font-size: 66px;
     color: #b51b1b;
+    padding-top: 20px;
 }
-/* MODAL */
+/* MODAL-RESULT */
+
 
 /* MAIN */
 .container-labirinto{
@@ -65,33 +98,19 @@ html, body, h1, h2, p, label, button {
     justify-content: center;
     background-color: #0f0606;
 }
-.linha {
+.line {
     display: flex;
 }
 
-.celula {
+.cell {
     width: 30px;
     height: 30px;
 }
 
-.parede {
-    /* background-image: linear-gradient(to left, #dc2d16, #000000); */
+.parede-map1 {
     background-color: #a01414;
-    /*box-shadow: 3px 5px 3px #1a0909;*/
 }
-/*
 
-.player {
-    position: relative;
-    width: 26px;
-    height: 26px;
-    background-color: rgb(224, 221, 16);
-    border-radius: 100%;
-    transform: rotate(0deg);
-    animation: 3s linear 1s infinite running slidein;
-    
-}
-*/
 .player{
     width: 26px;
     height: 26px;
@@ -99,12 +118,6 @@ html, body, h1, h2, p, label, button {
     background-repeat: no-repeat;
 }
 
-@keyframes slideRight {
-    from {margin-left: -33px;}
-    to {margin-left: 0;}
-}
-
-.slideRight {animation-name: slideRight;}
 .player-efect {
     position: absolute;
     height: 0;

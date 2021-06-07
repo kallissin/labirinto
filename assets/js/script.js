@@ -1,3 +1,8 @@
+const btnPlay = document.getElementById('btn-play');
+btnPlay.addEventListener('click', () => {
+    document.getElementById('modal-initial').classList.add('hidden');
+})
+
 const map = [
     "WWWWWWWWWWWWWWWWWWWWW",
     "W   W     W     W W W",
@@ -16,20 +21,25 @@ const map = [
     "WWWWWWWWWWWWWWWWWWWWW",
 ];
 
+creatMap(map)
+
+const player = createPlayer()
+const posInitial = document.querySelector(`div[data-start="S"`);
+posInitial.appendChild(player);
+
 const currentPosition = {
-    'line': 9,
-    'cell': 0,
+    'line': posInitial.dataset.line,
+    'cell': posInitial.dataset.cell,
 }
 
 let linePosition = currentPosition['line'];
 let cellPosition = currentPosition['cell'];
 
-creatMap(map);
+document.addEventListener('keydown', (event) => {
+    const keyName = event.key;
+    checkedMove(keyName);
 
-const player = createPlayer()
-
-const posInitial = document.querySelector(`div[data-linha="${linePosition}"][data-celula="${cellPosition}"]`);
-posInitial.appendChild(player);
+})
 
 function checkedWinner (positionMap) {
     const modalResult = document.getElementById('modal-result');
@@ -43,35 +53,33 @@ function checkedWinner (positionMap) {
 
 function creatMap (map) {
 
-    
-    //const script = document.querySelector('script');
     const contLabirinto = document.getElementById('container-labirinto');
-    
-    
+        
     for (let i = 0; i < map.length; i++) {
         let lineArray = map[i].split('');
         const lineDiv = document.createElement('div');
-        lineDiv.classList.add('linha');
+        lineDiv.classList.add('line');
     
         for (let j = 0; j < lineArray.length; j++) {
             let index = lineArray[j];
             const cellDiv = document.createElement('div');
     
-            cellDiv.setAttribute('data-linha', `${i}`);
-            cellDiv.setAttribute('data-celula', `${j}`);
-            cellDiv.classList.add('celula');
+            cellDiv.setAttribute('data-line', `${i}`);
+            cellDiv.setAttribute('data-cell', `${j}`);
+            cellDiv.classList.add('cell');
             if (index === "W") {
-                cellDiv.classList.add('parede');
+                cellDiv.classList.add('parede-map1');
             }
             if (index === "F") {
-                cellDiv.setAttribute('data-finished', 'F')
-                console.log(cellDiv);
+                cellDiv.setAttribute('data-finished', 'F');
             }
-    
+            if (index === "S") {
+                cellDiv.setAttribute('data-start', 'S');
+
+            }
             lineDiv.appendChild(cellDiv);
         }
         contLabirinto.appendChild(lineDiv);
-        //document.body.insertBefore(lineDiv,script);
     }
     
 }
@@ -83,25 +91,23 @@ function createPlayer() {
     return player;
 }
 
-function atualizarPosicao (line, cell) {
-    let positionMap = document.querySelector(`div[data-linha="${line}"][data-celula="${cell}"]`);
+function updatePosition (line, cell) {
+    let positionMap = document.querySelector(`div[data-line="${line}"][data-cell="${cell}"]`);
     positionMap.appendChild(player); 
     console.log(positionMap);
     return positionMap;
 }
 
-document.addEventListener('keydown', (event) => {
-    const keyName = event.key;
-
+function checkedMove (keyName) {
     if (keyName === 'ArrowUp') {
         player.style.transform = "rotate(270deg)";
-        if (map[linePosition -1][cellPosition] !== 'W') {
+        if ((map[linePosition -1][cellPosition] !== 'W') && (linePosition > 0)) {
             linePosition -- ;
         }
     }
     if (keyName === 'ArrowDown') {
         player.style.transform = "rotate(90deg)";
-        if (map[linePosition +1][cellPosition] !== 'W') {
+        if ((map[linePosition +1][cellPosition] !== 'W') && (linePosition < 20)){
             linePosition ++ ;
         }
     }
@@ -115,8 +121,10 @@ document.addEventListener('keydown', (event) => {
         player.style.transform = "rotate(0deg)";
         if ((map[linePosition][cellPosition +1] !== 'W') && (cellPosition < 20)) {
             cellPosition ++ ;
+
         }
     }
-    const positionMap = atualizarPosicao(linePosition, cellPosition);
+    const positionMap = updatePosition(linePosition, cellPosition);
     checkedWinner(positionMap);
-})
+}
+
